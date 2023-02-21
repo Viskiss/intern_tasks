@@ -2,20 +2,19 @@ import { useState } from "react";
 
 const Task2 = (props) => {
   const [idValue, setIdValue] = useState(0);
-  const [requestedId, setRequestedId] = useState(null);
 
   const fetchData = () => {
-    fakeRequest(requestedId);
+    fakeRequest(idValue);
   };
 
   const submitHandler = () => {
-    setRequestedId(idValue);
     fetchData();
   };
 
   const inputChangeHandler = (ev) => {
     setIdValue(ev.target.value);
   };
+  console.log(idValue);
 
   return (
     <div>
@@ -35,4 +34,3 @@ async function fakeRequest(id) {
   });
 
   console.log("Id in request is:", id);
-}
