@@ -4,13 +4,17 @@ const Task1 = () => {
   const [state, setState] = useState(false);
 
   const toggler = () => {
-    setState(!state);
+    if(!state) {
+      setState(true);
+    } else {
+      setState(false)
+    }
   };
 
   return (
-    <button onClick={toggler()} style={{ background: state ? "red" : "blue" }}>
-      Click Me
-    </button>
+    <button onClick={toggler} style={{ background: state ? "red" : "blue" }}>
+    Click Me
+  </button>
   );
 };
 

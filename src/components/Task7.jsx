@@ -7,7 +7,7 @@ const listOfItems = Array(4)
     if (idx % 2) {
       return {
         name: "Im hidden",
-        status: "blocked",
+        status: "block",
       };
     }
     return {
@@ -20,9 +20,9 @@ const Task7 = (props) => {
   const [status, setStatus] = React.useState("active"); // active | blocked
   let myVisibleElements = listOfItems;
 
-  if (status === "blocked") {
+  if (status === "block") {
     myVisibleElements = useMemo(() => {
-      return listOfItems.filter((i) => i.status === "blocked");
+      return listOfItems.filter((i) => i.status === "block");
     }, [status]);
   } else {
     myVisibleElements = useMemo(() => {
@@ -31,12 +31,13 @@ const Task7 = (props) => {
   }
 
   const toggleStatus = () => {
-    setStatus(status === 'acvtive' ? 'block' : 'active')
-  }
+    setStatus(status === "active" ? "block" : "active");
+    console.log(status)
+  };
 
   return (
     <div>
-      <button onClick={toggleStatus}></button>
+      <button onClick={toggleStatus}>ddddd</button>
       {myVisibleElements.map((item, idx) => (
         <p key={idx}>{item.name}</p>
       ))}

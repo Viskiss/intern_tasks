@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Task8 = (props) => {
   const [userId, setUserId] = React.useState(1);
@@ -12,19 +12,22 @@ const Task8 = (props) => {
       .catch((err) => {
         setUserId(1);
       });
-  };
+  }
 
   const startFetchId = () => {
-    setDoRequest(true);
-  }
+    if (!doRequest) {
+      setDoRequest(true);
+    } else {
+      setDoRequest(false);
+    }
+  };
 
   return (
     <>
-    <h1>User id is {userId}</h1>
-    <button onClick={startFetchId}>Fetch Id</button>
-    
+      <h1>User id is {userId}</h1>
+      <button onClick={startFetchId}>Fetch Id</button>
     </>
-  )
+  );
 };
 
 function fakeApi(id) {
@@ -37,5 +40,4 @@ function fakeApi(id) {
   });
 }
 
-
-export default Task8
+export default Task8;
