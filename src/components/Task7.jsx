@@ -17,22 +17,16 @@ const listOfItems = Array(4)
   });
 
 const Task7 = (props) => {
-  const [status, setStatus] = React.useState("active"); // active | blocked
+  const [status, setStatus] = React.useState("active");
   let myVisibleElements = listOfItems;
 
-  if (status === "block") {
-    myVisibleElements = useMemo(() => {
-      return listOfItems.filter((i) => i.status === "block");
-    }, [status]);
-  } else {
-    myVisibleElements = useMemo(() => {
-      return listOfItems.filter((i) => i.status === "active");
-    }, [status]);
-  }
+  myVisibleElements = useMemo(() => {
+    return listOfItems.filter((i) => i.status === status);
+  }, [status]);
 
   const toggleStatus = () => {
     setStatus(status === "active" ? "block" : "active");
-    console.log(status)
+    console.log(status);
   };
 
   return (
